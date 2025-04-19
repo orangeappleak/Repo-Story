@@ -1,4 +1,5 @@
 import requests
+import json
 
 GITHUB_API = "https://api.github.com"
 HEADERS = {"Accept": "application/vnd.github.v3+json"}
@@ -14,6 +15,7 @@ def fetch_repo_data(owner, repo):
     
     # Fetch first 50 commits
     commits_raw = requests.get(commits_url, headers=HEADERS).json()
+    print(json.dumps(commits_raw, indent=5))
     commits = [
         {
             "sha": c["sha"],
